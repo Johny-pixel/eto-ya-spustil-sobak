@@ -33,6 +33,7 @@ window.Maximize()
 while True:
     event, values = window.read()
     if event in (sg.WIN_CLOSED, 'Exit'):
+        contact_information_window.delete()
         break
     elif event == 'Submit Contact Information':
         validation_result = validation.validate(values)
@@ -51,9 +52,16 @@ while True:
     elif event == 'Find by ID':
         print('You chose', values[0])
         contact_information_window.create('find by id', int(values[0]))
-
     elif event == 'Find by the Year of Birth':
-        print('You chose', values[1])
+        contact_information_window.create('find by year', int(values[1]))
+    elif event == 'Delete by ID':
+        contact_information_window.delete_by_id(int(values[2]))
+        sg.popup("Deleted!")
+
+    elif event == 'Delete by the Year of Birth':
+        contact_information_window.delete_by_year(int(values[3]))
+        sg.popup("Deleted!")
+
 
 
 
