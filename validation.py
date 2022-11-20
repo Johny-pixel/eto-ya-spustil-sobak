@@ -22,11 +22,11 @@ def validate(values):
         values_invalid.append('Year of Birth')
         is_valid = False
 
-    if len(values['-YEAR_OF_BIRTH-']) == 0:
+    if len(values['-WAGE-']) == 0:
         values_invalid.append('Wage')
         is_valid = False
 
-    if len(values['-YEAR_OF_BIRTH-']) == 0:
+    if len(values['-MARITAL_STATUS-']) == 0:
         values_invalid.append('Marital Status')
         is_valid = False
 

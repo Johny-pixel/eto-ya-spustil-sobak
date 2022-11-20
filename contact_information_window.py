@@ -1,11 +1,11 @@
+import csv
+
 import PySimpleGUI as sg
 
 import database_interface
-import csv
-
-from database_interface import hashtable
 
 database_interface = database_interface.database_interface()
+
 
 def find_all():
     contact_records = database_interface.find_all()
@@ -23,8 +23,14 @@ def find_by_year(year):
 def delete_by_id(id):
     database_interface.delete(id)
 
+
 def delete_by_year(year):
     database_interface.deleteByYearOfBirth(year)
+
+
+def insert(id, name, address, phone_number, year_of_birth, wage, marital_status):
+    database_interface.insert(id, name, address, phone_number, year_of_birth, wage, marital_status)
+
 
 def create(type=None, parameter=0):
     if type == 'find all':
@@ -65,9 +71,9 @@ def delete():
     id_deleted_dict = database_interface.get_id_deleted_dict()
 
     print(id_deleted_dict)
-    with open('contacts.csv', 'r') as inp, open('first_edit.csv', 'w', newline= '') as out:
+    with open('contacts.csv', 'r') as inp, open('first_edit.csv', 'w', newline='') as out:
         writer = csv.writer(out)
-        writer.writerow(['Id', 'Name','Address','Phone Number', 'Year of Birth', 'Wage', 'Engaged'])
+        writer.writerow(['Id', 'Name', 'Address', 'Phone Number', 'Year of Birth', 'Wage', 'Engaged'])
 
         for row in csv.reader(inp):
             if row[0] != 'Id':

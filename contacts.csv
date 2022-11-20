@@ -1,4 +1,4 @@
-Id, Name,Address,Phone Number, Year of Birth, Wage, Engaged
+Id,Name,Address,Phone Number,Year of Birth,Wage,Engaged
 1, Anton ,100 Kuznechihinskaya, 3214567, 2005, 100000.43, True
 2, Kirill,22 Chvanova, 4015613, 2016, 0.0, False
 3, Aleksandr, 63 Lenina, 5819875, 1997, 49492.13, False
@@ -19,3 +19,4 @@ Id, Name,Address,Phone Number, Year of Birth, Wage, Engaged
 18, Georgy, 76 Solnechnaya, 1170923, 1970, 40107.41, True
 19, Oleg, 23 Parkovaya, 4625595, 2009, 16145.30, False
 20, Nina, 17 Avtozavodskaya, 8772223, 1986, 84894.63, False
+21, 1, 1, 1, 1, 1, 1
