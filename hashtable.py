@@ -10,7 +10,7 @@ class Hashtable:
     def __init__(self):
         # os.chdir(r'C:\Users\anton\PycharmProjects\PySimpleGUI-CSV-Tutorial-main')
 
-        os.chdir(r'C:\Users\Euphoria\eto-ya-spustil-sobak')
+        os.chdir(r'/home/euphoria/eto-ya-spustil-sobak/')
 
         with open('contacts.csv', 'r') as file:
             for index, line in enumerate(file):
@@ -61,7 +61,7 @@ def fill_ends_of_lines_array():
         for i, line in enumerate(file):
             last_index = new_line_indices[i]
             if '\n' in line:
-                _index = len(line) + 1
+                _index = len(line)
                 new_line_indices.append(_index + last_index)
 
     return new_line_indices

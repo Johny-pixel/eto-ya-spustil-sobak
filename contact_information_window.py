@@ -1,10 +1,15 @@
 import csv
+import os
 
 import PySimpleGUI as sg
+import pandas as pd
 
 import database_interface
 
+
 database_interface = database_interface.database_interface()
+
+os.chdir(r'/home/euphoria/eto-ya-spustil-sobak/')
 
 
 def find_all():
@@ -30,6 +35,10 @@ def delete_by_year(year):
 
 def insert(id, name, address, phone_number, year_of_birth, wage, marital_status):
     database_interface.insert(id, name, address, phone_number, year_of_birth, wage, marital_status)
+
+
+def update(id, name, address, phone_number, year_of_birth, wage, marital_status):
+    database_interface.update(id, name, address, phone_number, year_of_birth, wage, marital_status)
 
 
 def create(type=None, parameter=0):
@@ -80,3 +89,13 @@ def delete():
                 if id_deleted_dict.get(int(row[0])) == False:
                     # if not id_deleted_dict.get(row[0]):
                     writer.writerow(row)
+
+
+def export_to_xlsx():
+    file = pd.read_csv('contacts.csv')
+    file.to_excel('export.xlsx')
+
+
+def set_file(name):
+    file = pd.read_csv(name)
+    file.to_csv('contacts.csv')

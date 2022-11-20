@@ -1,6 +1,6 @@
 Id,Name,Address,Phone Number,Year of Birth,Wage,Engaged
-1, Anton ,100 Kuznechihinskaya, 3214567, 2005, 100000.43, True
-2, Kirill,22 Chvanova, 4015613, 2016, 0.0, False
+1, Anton, 100 Kuznechihinskaya, 3214567, 2005, 100000.43, True
+2, Kirill, 22 Chvanova, 4015613, 2016, 0.0, False
 3, Aleksandr, 63 Lenina, 5819875, 1997, 49492.13, False
 4, Arkady, 1 Chernishenko, 3313392, 2001, 61898.29, True
 5, Elizaveta, 43 Rozdestvenskaya, 8396798, 2004, 77803.48, False

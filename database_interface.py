@@ -4,7 +4,7 @@ import hashtable
 
 # os.chdir(r'C:\Users\anton\PycharmProjects\PySimpleGUI-CSV-Tutorial-main')
 
-os.chdir(r'C:\Users\Euphoria\eto-ya-spustil-sobak')
+os.chdir(r'/home/euphoria/eto-ya-spustil-sobak/')
 
 
 class database_interface:
@@ -31,6 +31,7 @@ class database_interface:
 
         result_array = []
         for row in rows_to_read:
+            print(self.hashtable.get_line(row).split(','))
             result_array.append(self.hashtable.get_line(row).split(','))
         return result_array
 
@@ -45,8 +46,18 @@ class database_interface:
                     array.append(row)
         return array
 
-    def update(self):
-        pass
+    def update(self, id, name, address, phone_number, year_of_birth, wage, marital_status):
+        with open('contacts.csv', 'r') as f:
+            l = list(f)
+
+        with open('contacts.csv', 'w') as output:
+            for line in l:
+                if line.startswith(id + ','):
+                    output.write(
+                        str(id + ', ' + name + ', ' + address + ', ' + phone_number + ', ' + year_of_birth + ', ' + wage + ', '
+                            + marital_status + '\n'))
+                else:
+                    output.write(line)
 
     def delete(self, id):
         self.hashtable.delete_by_id(id)

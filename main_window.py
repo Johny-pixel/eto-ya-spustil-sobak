@@ -1,7 +1,6 @@
 import PySimpleGUI as sg
 
 import contact_information_window
-import database_interface
 import generate_csv
 import validation
 
@@ -16,7 +15,8 @@ layout = [[sg.Text("Enter ID:"), sg.Input(key='-ID-', do_not_clear=True, size=(1
           [sg.Text("Enter wage:"), sg.Input(key='-WAGE-', do_not_clear=True, size=(150, 1))],
           [sg.Text("Enter marital status:"), sg.Input(key='-MARITAL_STATUS-', do_not_clear=True, size=(150, 1))],
           [sg.Button('Submit Contact Information', expand_x=True), sg.Button('Show Table', expand_x=True),
-           sg.Button('Generate CSV', expand_x=True), sg.Button('Update', expand_x=True), sg.Exit()],
+           sg.Button('Import from CSV', expand_x=True), sg.Button('Update', expand_x=True), sg.Button('Export to XLSX'),
+           sg.Exit()],
           [sg.Text('Finding by ID')], [sg.Input()], [sg.OK('Find by ID')],
           [sg.Text('Finding by the Year of Birth')], [sg.Input()], [sg.OK('Find by the Year of Birth')],
           [sg.Text('Deleting by ID')], [sg.Input()], [sg.OK('Delete by ID')],
@@ -35,8 +35,9 @@ while True:
         validation_result = validation.validate(values)
         if validation_result["is_valid"]:
             print(values)
-            contact_information_window.insert(values['-ID-'], values['-NAME-'], values['-ADDRESS-'], values['-PHONE_NUMBER-'],
-                                      values['-YEAR_OF_BIRTH-'], values['-WAGE-'], values['-MARITAL_STATUS-'])
+            contact_information_window.insert(values['-ID-'], values['-NAME-'], values['-ADDRESS-'],
+                                              values['-PHONE_NUMBER-'],
+                                              values['-YEAR_OF_BIRTH-'], values['-WAGE-'], values['-MARITAL_STATUS-'])
             print(values)
             sg.popup("Contact Information submitted!")
         else:
@@ -54,7 +55,16 @@ while True:
     elif event == 'Delete by ID':
         contact_information_window.delete_by_id(int(values[2]))
         sg.popup("Deleted!")
-
     elif event == 'Delete by the Year of Birth':
         contact_information_window.delete_by_year(int(values[3]))
         sg.popup("Deleted!")
+    elif event == 'Update':
+        contact_information_window.update(values['-ID-'], values['-NAME-'], values['-ADDRESS-'],
+                                          values['-PHONE_NUMBER-'],
+                                          values['-YEAR_OF_BIRTH-'], values['-WAGE-'], values['-MARITAL_STATUS-'])
+        sg.popup('Updated!')
+    elif event == 'Export to XLSX':
+        contact_information_window.export_to_xlsx()
+    elif event == 'Import from CSV':
+        name = sg.popup_get_text('Enter file name *.csv')
+        contact_information_window.set_file(name)

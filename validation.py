@@ -33,6 +33,7 @@ def validate(values):
     result = {"is_valid": is_valid, "values_invalid": values_invalid}
     return result
 
+
 def generate_error_message(values_invalid):
     error_message = ''
     for value_invalid in values_invalid:
